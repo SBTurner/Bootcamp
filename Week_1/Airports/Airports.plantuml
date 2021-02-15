@@ -1,0 +1,53 @@
+@startuml name Airports
+
+class Airport{
+    name: String
+    planes: Array<Plane>
+    ---
+    lanePlane(<Plane>)
+    takeOffPlane(<Plane>)
+}
+
+class Plane{
+    name: String
+    boardedPassengers: Array<Passenger>
+    boardedCrew: Array<Crew>
+    ---
+    boardPlane(<Person>)
+    leavePlane(<Person>)
+}
+
+class Person{
+    name: String
+    bags: Array<Bag>
+}
+
+class Crew{
+    name: String
+    bags: Array<Bag>
+    ---
+    greetPassengers()
+
+}
+
+class Passenger{
+    name: String
+    bags: Array<Bag>
+    ---
+    callAssistant()
+}
+
+class Bag{
+    weight: Integer
+
+
+}
+
+Airport --{Plane
+Plane --{Person
+Person --{Bag
+Person --|> Passenger
+Person --|> Crew
+
+
+@enduml

@@ -1,0 +1,33 @@
+@startuml name Kanban
+
+class User{
+    id: Integer
+    name: String
+    image: String
+}
+
+class Board{
+    id: Integer
+    title: String
+    ---
+    addTask(<Task>)
+    removeTask<Task>
+    editTask(<Task>)
+
+}
+
+class Task{
+    id: Integer
+    desc: String
+    status: Integer
+    user: <User>
+    ---
+    assignUser(<User>)
+    removeUser(<User>)
+}
+
+
+Board --{ Task
+User --{ Task
+
+@enduml

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Event Object</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+        <div class="container-fluid">
+            <div class="nav-bar py-3">
+                <ul class="nav justify-content-end nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <main class="container-fluid p-3 my-3 border-top d-block" id="app">
+                <div id="click" class="card m-3">
+                    <div class="card-header">
+                        Set background to pink
+                        <button class="btn btn-sm btn-success d-inline" onclick="buttonWasClicked(event)">Go!</button>
+                        <button class="btn btn-sm btn-danger d-inline" onclick="buttonWasUnclicked(event)">Undo</button>
+                    </div>
+
+                </div>
+                <div id="hover" class="card m-3">
+                    <div class="card-header">
+                        Hover over me
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script>
+            function buttonWasClicked(event){
+                const el = document.getElementById("click")
+                el.style.backgroundColor = "pink"
+            }
+            function buttonWasUnclicked(event){
+                const el = document.getElementById("click")
+                el.style.backgroundColor = ""
+            }
+            function hoveredOver(event){
+                event.srcElement.style.color = "red"
+            }
+            function unhoveredOver(event){
+                event.srcElement.style.color = "black"
+            }
+            document.getElementById("hover").addEventListener("mouseover", hoveredOver)
+            document.getElementById("hover").addEventListener("mouseout", unhoveredOver)
+
+
+        </script>
+    </body>
+</html>

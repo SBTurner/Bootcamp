@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <title>Booking Form</title>
+    <style> 
+    body {
+        line-height: 1.6em;
+        font-family: sans-serif;
+
+    }
+    legend {
+        font-weight: bold;
+        font-size: 100%;
+    }
+    </style>
+
+</head>
+<body>
+  <form action="/events/bookings" method="post">
+    <fieldset>
+        <legend>Booking Form</legend>
+        Please select the activity:
+        <br/>
+        <input id="mountain-biking" type="radio" name="activity" value="mountain-biking"/>
+        <label for="mountain-biking">Mountain Biking</label>
+        <input id="skiing" type="radio" name="activity" value="skiing"/>
+        <label for="skiing">Skiing</label>
+        <input id="paragliding" type="radio" name="activity" value="paragliding"/>
+        <label for="paragliding">Paragliding</label>
+        <input id="kite-surfing" type="radio" name="activity" value="kite-surfing"/>
+        <label for="kite-surfing">Kite Surfing</label>
+        <br/>
+        Please select a date:
+        <br/>
+        <span><input id="activity-date" type="date" name="activity-date"/>
+        <p id="date-msg"></p><span>
+        How many people are attending?
+        <br/>
+        <input id="number-attending" type="text" name="number-attending"/>
+        <br/>
+        Please enter your email address:
+        <br/>
+        <input id="user-email" type="email" name="user-email"/>
+        <br/>
+        <input type="submit" value="Submit">
+    </fieldset>
+  </form>
+</body>
+<script type="text/javascript">
+    var todayDate = new Date()
+
+    function checkDate(){
+        var enteredDate = new Date(elDate.value);
+        elDateMsg.textContent=""
+            if (enteredDate<todayDate){
+                elDateMsg.textContent='Warning - the date you have selected is in the past. Please update.';
+            }
+            
+    }
+    
+    var elDate = document.getElementById('activity-date')
+    var elDateMsg = document.getElementById('date-msg')
+
+    elDate.addEventListener('blur', checkDate, false)
+
+</script>
